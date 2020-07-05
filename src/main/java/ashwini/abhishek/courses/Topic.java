@@ -10,7 +10,7 @@ public class Topic {
     private int id;
     private String name;
     @ManyToOne
-    private Course course;
+    private Course course = null;
 
     public Topic(int id, String name, Course course) {
         this.id = id;

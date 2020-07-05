@@ -17,7 +17,7 @@ public class CourseController {
     }
 
     @RequestMapping(method=RequestMethod.POST,value="/courses")
-    public void addTopic(@RequestBody Course course) {
+    public void addCourse(@RequestBody Course course) {
         courseService.addCourse(course);
     }
 
