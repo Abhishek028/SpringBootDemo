@@ -2,10 +2,7 @@ package ashwini.abhishek.courses;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +20,10 @@ public class CourseController {
     public void addTopic(@RequestBody Course course) {
         courseService.addCourse(course);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE,value ="/courses/{id}")
+    public void deleteCourse(@PathVariable("id") int id) {
+        courseService.deleteCourse(id);
+    }
+
 }

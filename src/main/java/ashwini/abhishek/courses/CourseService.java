@@ -22,4 +22,7 @@ public class CourseService {
         courseRepository.save(course);
     }
 
+    public void deleteCourse(int id) {
+        courseRepository.deleteById(id);
+    }
 }
