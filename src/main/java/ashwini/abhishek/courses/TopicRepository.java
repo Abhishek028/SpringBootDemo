@@ -1,6 +1,8 @@
 package ashwini.abhishek.courses;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -12,16 +14,7 @@ import java.util.Properties;
 
 @Repository
 class TopicRepository {
-//    public Connection getConnection() throws SQLException {
-//
-//        Connection conn = null;
-//        Properties connectionProps = new Properties();
-//        connectionProps.put("user","postgres");
-//        connectionProps.put("password", "password");
-//        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb",
-//                    connectionProps);
-//        return conn;
-//    }
+
     @Autowired
     public DataSource ds;
 
@@ -49,7 +42,7 @@ class TopicRepository {
         return list;
     }
 
-    public void addTopic(int id,Topic topic) throws SQLException {
+    public ResponseMessage addTopic(int id,Topic topic) throws SQLException {
         conn = ds.getConnection();
         String query = "INSERT INTO topic (id,name,course_id) VALUES (?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(query);
@@ -57,7 +50,6 @@ class TopicRepository {
         stmt.setString(2,topic.getName());
         stmt.setInt(3,id);
         stmt.executeUpdate();
+        return new ResponseMessage(200,"ok");
     }
-
-
 }

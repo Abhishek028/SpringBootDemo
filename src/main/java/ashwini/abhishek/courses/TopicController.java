@@ -1,6 +1,8 @@
 package ashwini.abhishek.courses;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -18,7 +20,7 @@ public class TopicController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value = "courses/{id}/topics")
-    public void addTopic(@PathVariable("id") int id, @RequestBody Topic topic) throws SQLException {
-        topicService.addTopic(id,topic);
+    public ResponseMessage addTopic(@PathVariable("id") int id, @RequestBody Topic topic) throws SQLException {
+        return topicService.addTopic(id,topic);
     }
 }

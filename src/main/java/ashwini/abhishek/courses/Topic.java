@@ -45,4 +45,11 @@ public class Topic {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    @Override
+    public boolean equals(Object topic) {
+        if(this.getId() == ((Topic)topic).getId() && this.getName().equals(((Topic)topic).getName()))
+            return true;
+        return false;
+    }
 }
