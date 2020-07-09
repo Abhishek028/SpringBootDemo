@@ -30,6 +30,7 @@ class TopicRepository {
 
     public List<Topic> getAllTopics(int courseId) throws SQLException {
         conn = ds.getConnection();
+        System.out.println(conn);
         Statement stmt = conn.createStatement();
         String query = "select * from topic where course_id="+courseId;
         ResultSet rs = stmt.executeQuery(query);
@@ -44,6 +45,7 @@ class TopicRepository {
 
     public ResponseMessage addTopic(int id,Topic topic) throws SQLException {
         conn = ds.getConnection();
+
         String query = "INSERT INTO topic (id,name,course_id) VALUES (?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1,topic.getId());
