@@ -24,9 +24,6 @@ class TopicRepository {
     public Connection conn = null;
 
 
-    public TopicRepository() throws SQLException {
-
-    }
 
     public List<Topic> getAllTopics(int courseId) throws SQLException {
         conn = ds.getConnection();
