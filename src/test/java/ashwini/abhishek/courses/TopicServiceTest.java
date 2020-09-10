@@ -17,6 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/*Prior to JUnit 5, we would use MockitoJUnitRunner to run our unit test.
+In the new JUnit version, the runner behaviors have been replaced by Extensions.
+This one, the MockitoExtension, is provided by Mockito and adds some useful functionalities:
+detects that we’re using the framework, that there are no unused stubs, and initializes for us all the fields annotated with @Mock,
+so we don’t need to call the Mockito.initMocks() method.*/
+
 @ExtendWith(MockitoExtension.class)
 public class TopicServiceTest {
     @Mock
